@@ -45,6 +45,9 @@
                 "argsIgnorePattern": "^_"
             }
         ]
+    },
+    "globals": {
+        "React": "writable"
     }
     
 }
