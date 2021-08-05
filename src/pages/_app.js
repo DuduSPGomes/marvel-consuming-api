@@ -2,6 +2,7 @@ import Head from 'next/head'
 import AppProvider from '../contexts/app'
 import { ChakraProvider } from '@chakra-ui/react'
 import { theme } from '../theme'
+import Fonts from 'theme/fonts'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -11,6 +12,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <AppProvider>
         <ChakraProvider theme={theme}>
+          <Fonts />
           <Component {...pageProps} />
         </ChakraProvider>
       </AppProvider>

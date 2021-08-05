@@ -6,7 +6,7 @@ import styles from 'theme/styles'
 const theme = extendTheme<ChakraTheme, any>({
   styles,
   fonts: {
-    body: 'Gilroy Medium'
+    body: 'Bungee Regular'
   },
   colors,
   components: {
