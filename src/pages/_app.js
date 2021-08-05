@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import AppProvider from '../contexts/app'
+import { ChakraProvider } from '@chakra-ui/react'
+import { theme } from '../theme'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -8,7 +10,9 @@ function MyApp({ Component, pageProps }) {
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
       </Head>
       <AppProvider>
-        <Component {...pageProps} />
+        <ChakraProvider theme={theme}>
+          <Component {...pageProps} />
+        </ChakraProvider>
       </AppProvider>
     </>
   )
