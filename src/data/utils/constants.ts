@@ -9,6 +9,9 @@ const public_key = process.env.NEXT_PUBLIC_MARVEL_PUBLIC_KEY
 
 const hash = CryptoJs.MD5(timestamp + private_key + public_key)
 
-const authentication = `?ts=${timestamp}&apikey=${public_key}&hash=${hash.toString()}`
+export const auth = `ts=${timestamp}&apikey=${public_key}&hash=${hash.toString()}`
 
-export const charactersRouter = `/characters${authentication}`
+export const charactersRouter = '/characters?'
+
+export const characterRouter = (characterId: number) =>
+  `/characters/${characterId}?`
