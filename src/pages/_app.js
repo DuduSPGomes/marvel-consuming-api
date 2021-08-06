@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }) {
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
       </Head>
       <AppProvider>
-        <ChakraProvider theme={theme}>
+        <ChakraProvider theme={theme} resetCSS>
           <Fonts />
           <Component {...pageProps} />
         </ChakraProvider>
