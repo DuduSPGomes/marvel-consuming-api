@@ -1,4 +1,5 @@
 import { Flex, Box, Icon, Heading, Text } from '@chakra-ui/react'
+import BackgroundImage from 'components/background-image'
 import SearchIcon from 'components/icons/search-icon'
 import Loading from 'components/loading'
 import router from 'next/router'
@@ -6,14 +7,14 @@ import React from 'react'
 
 interface ITemplateProps {
   children: React.ReactNode
-  backgroundImage?: string
-  blur?: boolean
+  backgroundImageUrl?: string
+  filter?: boolean
 }
 
 export default function Template({
   children,
-  backgroundImage,
-  blur = false
+  backgroundImageUrl,
+  filter = false
 }: ITemplateProps) {
   return (
     <Flex
@@ -23,21 +24,7 @@ export default function Template({
       justifyContent="center"
       h="100vh"
     >
-      <Flex
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="space-between"
-        w="100%"
-        h="100vh"
-        bgColor="black"
-        bgImage={`url(${backgroundImage})`}
-        bgSize="cover"
-        bgPosition="center"
-        bgRepeat="no-repeat"
-        filter={`${blur ? 'blur(10px)' : ''}`}
-        position="absolute"
-        zIndex="1"
-      />
+      <BackgroundImage url={backgroundImageUrl} filter={filter} />
       <Flex
         marginY="45px"
         alignItems="center"

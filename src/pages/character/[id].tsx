@@ -15,7 +15,7 @@ export default function DescriptionPage({ character }: IDescriptionPageProps) {
     character?.thumbnail?.path + '.' + character?.thumbnail?.extension
 
   return (
-    <Template backgroundImage={characterImage} blur={true}>
+    <Template backgroundImageUrl={characterImage} filter={true}>
       <Flex flexDirection="column" alignItems="center">
         <Image
           w="36"
