@@ -6,7 +6,7 @@ export default function Logo() {
     <Heading
       as="h3"
       fontFamily="Bungee Regular"
-      fontSize="4xl"
+      fontSize={['4xl', '4xl', '8xl']}
       color="whiteAlpha.800"
     >
       MYSUPERHERO
