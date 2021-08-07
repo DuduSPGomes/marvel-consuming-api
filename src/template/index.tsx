@@ -1,8 +1,9 @@
-import { Flex, Box, Heading, Text } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 import BackgroundImage from 'components/background-image'
 import Loading from 'components/loading'
 import React from 'react'
-import BackToSearchButton from 'components/back-to-search-button'
+import TemplateHeader from 'components/template-header'
+import TemplateFooter from 'components/template-footer'
 
 interface ITemplateProps {
   children: React.ReactNode
@@ -23,8 +24,7 @@ export default function Template({
       justifyContent="center"
       h="100vh"
     >
-      <BackgroundImage url={backgroundImageUrl} filter={filter} />
-      <BackToSearchButton />
+      <TemplateHeader />
       <Flex
         position="relative"
         zIndex="2"
@@ -35,27 +35,8 @@ export default function Template({
       >
         {children}
       </Flex>
-      <Box position="relative" zIndex="3" mt="auto">
-        <Heading
-          as="h3"
-          fontFamily="Bungee Regular"
-          fontSize="4xl"
-          color="whiteAlpha.800"
-        >
-          MYSUPERHERO
-        </Heading>
-        <Text
-          fontFamily="Roboto Regular"
-          color="white"
-          fontSize="xs"
-          fontWeight="400"
-          letterSpacing=".4px"
-          marginBottom="19px"
-          textAlign="center"
-        >
-          Data provided by Marvel. © 2020 MARVEL
-        </Text>
-      </Box>
+      <TemplateFooter />
+      <BackgroundImage url={backgroundImageUrl} filter={filter} />
       <Loading />
     </Flex>
   )
