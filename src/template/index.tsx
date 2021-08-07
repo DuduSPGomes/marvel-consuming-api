@@ -1,22 +1,26 @@
 import { Flex, Box, Icon, Heading, Text } from '@chakra-ui/react'
 import SearchIcon from 'components/icons/search-icon'
+import Loading from 'components/loading'
 import router from 'next/router'
 import React from 'react'
 
 interface ITemplateProps {
   children: React.ReactNode
   backgroundImage?: string
+  blur?: boolean
 }
 
 export default function Template({
   children,
-  backgroundImage
+  backgroundImage,
+  blur = false
 }: ITemplateProps) {
   return (
     <Flex
       position="relative"
       flexDirection="column"
       alignItems="center"
+      justifyContent="center"
       h="100vh"
     >
       <Flex
@@ -30,7 +34,7 @@ export default function Template({
         bgSize="cover"
         bgPosition="center"
         bgRepeat="no-repeat"
-        filter={`${backgroundImage ? 'blur(10px)' : ''}`}
+        filter={`${blur ? 'blur(10px)' : ''}`}
         position="absolute"
         zIndex="1"
       />
@@ -77,6 +81,7 @@ export default function Template({
           Data provided by Marvel. © 2020 MARVEL
         </Text>
       </Box>
+      <Loading />
     </Flex>
   )
 }

@@ -8,6 +8,7 @@ import {
   Text
 } from '@chakra-ui/react'
 import SearchIcon from 'components/icons/search-icon'
+import Loading from 'components/loading'
 import router from 'next/router'
 import React from 'react'
 
@@ -47,8 +48,7 @@ export default function Home() {
           onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
             const name = e.currentTarget.value
             if (e.key === 'Enter') {
-              localStorage.setItem('@searchedName', name)
-              router.push(`/character/search`)
+              router.push(`/search?name=${name}`)
             }
           }}
         />
@@ -63,6 +63,7 @@ export default function Home() {
       >
         Data provided by Marvel. © 2020 MARVEL
       </Text>
+      <Loading />
     </Flex>
   )
 }

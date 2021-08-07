@@ -1,30 +1,23 @@
-import { Button, Flex, Img, Text } from '@chakra-ui/react'
+import { Button, Flex, Image, Text } from '@chakra-ui/react'
 import { getCharacter } from 'data/repositories/characters.repository'
 import { Character } from 'domain/character.model'
+import { GetStaticProps, GetStaticPropsContext } from 'next'
 import React from 'react'
 import { FaPlus } from 'react-icons/fa'
 import Template from 'template'
 
-export default function DescriptionPage() {
-  const [character, setCharacter] = React.useState<Character>(undefined)
-  const [loading, setLoading] = React.useState(true)
-  const [error, setError] = React.useState('')
+interface IDescriptionPageProps {
+  character: Character
+}
 
-  React.useEffect(() => {
-    const characterIdStored = Number(localStorage.getItem('@characterId'))
-    getCharacter(characterIdStored)
-      .then((resp) => setCharacter(resp))
-      .catch((error) => setError(error?.response?.message))
-      .finally(() => setLoading(false))
-  }, [])
-
+export default function DescriptionPage({ character }: IDescriptionPageProps) {
   const characterImage =
     character?.thumbnail?.path + '.' + character?.thumbnail?.extension
 
   return (
-    <Template backgroundImage={characterImage}>
+    <Template backgroundImage={characterImage} blur={true}>
       <Flex flexDirection="column" alignItems="center">
-        <Img
+        <Image
           w="36"
           h="36"
           borderRadius="xl"
@@ -57,4 +50,22 @@ export default function DescriptionPage() {
       </Button>
     </Template>
   )
+}
+
+export const getStaticProps: GetStaticProps = async (
+  context: GetStaticPropsContext
+) => {
+  const { id } = context.params
+  const character = await getCharacter(Number(id))
+
+  return {
+    props: { character }
+  }
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: true
+  }
 }
