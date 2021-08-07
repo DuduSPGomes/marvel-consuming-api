@@ -1,9 +1,8 @@
-import { Flex, Box, Icon, Heading, Text } from '@chakra-ui/react'
+import { Flex, Box, Heading, Text } from '@chakra-ui/react'
 import BackgroundImage from 'components/background-image'
-import SearchIcon from 'components/icons/search-icon'
 import Loading from 'components/loading'
-import router from 'next/router'
 import React from 'react'
+import BackToSearchButton from 'components/back-to-search-button'
 
 interface ITemplateProps {
   children: React.ReactNode
@@ -25,18 +24,7 @@ export default function Template({
       h="100vh"
     >
       <BackgroundImage url={backgroundImageUrl} filter={filter} />
-      <Flex
-        marginY="45px"
-        alignItems="center"
-        onClick={() => router.push('/')}
-        position="relative"
-        zIndex="3"
-      >
-        <Box fontFamily="Bungee Regular" fontSize="md" color="#FBF2F2">
-          VOLTAR A PESQUISA
-        </Box>
-        <Icon as={SearchIcon} marginLeft="3" />
-      </Flex>
+      <BackToSearchButton />
       <Flex
         position="relative"
         zIndex="2"
