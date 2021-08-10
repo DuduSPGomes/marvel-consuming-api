@@ -70,7 +70,7 @@ export const getServerSideProps: GetServerSideProps = async (
   const { name } = context.query
   const characters = await getCharacters({ nameStartsWith: name as string })
 
-  if (!characters.length) {
+  if (!characters.length || !name) {
     return {
       notFound: true
     }
