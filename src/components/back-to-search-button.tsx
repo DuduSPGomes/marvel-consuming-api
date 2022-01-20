@@ -3,7 +3,11 @@ import router from 'next/router'
 import React from 'react'
 import SearchIcon from './icons/search-icon'
 
-export default function BackToSearchButton() {
+interface Props {
+  title: string
+}
+
+export default function BackToSearchButton({ title }: Props) {
   return (
     <Button
       variant="unstyled"
@@ -15,7 +19,7 @@ export default function BackToSearchButton() {
       fontSize="md"
       color="#FBF2F2"
     >
-      VOLTAR A PESQUISA
+      {title}
     </Button>
   )
 }

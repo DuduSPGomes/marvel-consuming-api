@@ -1,11 +1,10 @@
 import { Box } from '@chakra-ui/react'
 import React from 'react'
-import BackToSearchButton from './back-to-search-button'
 
-export default function TemplateHeader() {
+export default function TemplateHeader(props) {
   return (
     <Box position="relative" zIndex="3" marginY="45px">
-      <BackToSearchButton />
+      {props.children}
     </Box>
   )
 }

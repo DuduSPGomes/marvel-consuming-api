@@ -1,7 +1,11 @@
 import React from 'react'
 import { Text } from '@chakra-ui/react'
 
-export default function Copyright() {
+interface Props {
+  title: string
+}
+
+export default function Copyright({ title }: Props) {
   return (
     <Text
       fontFamily="Roboto Regular"
@@ -11,7 +15,7 @@ export default function Copyright() {
       letterSpacing=".4px"
       textAlign="center"
     >
-      Data provided by Marvel. © 2020 MARVEL
+      {title}
     </Text>
   )
 }

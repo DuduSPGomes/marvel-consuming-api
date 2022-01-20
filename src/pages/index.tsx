@@ -3,6 +3,7 @@ import {
   Button,
   Flex,
   Icon,
+  Input,
   InputGroup,
   InputLeftElement,
   keyframes,
@@ -12,12 +13,13 @@ import Copyright from 'components/copyright'
 import SearchIcon from 'components/icons/search-icon'
 import Loading from 'components/loading'
 import Logo from 'components/logo'
-import SearchInput from 'components/search-input'
 import useLoading from 'hooks/useLoading'
 import router from 'next/router'
 import React from 'react'
 
 export default function Home() {
+  const [inputValue, setInputValue] = React.useState('')
+
   const loading = useLoading()
   const spinKeyframes = keyframes`
     from { transform: translateX(0deg); }
@@ -51,9 +53,29 @@ export default function Home() {
         <InputLeftElement pointerEvents="none" h="100%">
           <Icon as={SearchIcon} />
         </InputLeftElement>
-        <SearchInput />
+        <Input
+          type="text"
+          h="100%"
+          border="1px solid"
+          borderColor="#313542"
+          bgColor="#1E222F"
+          color="#BBBBBB"
+          fontFamily="Gotham Regular"
+          fontSize="sm"
+          fontWeight="700"
+          paddingLeft="34px"
+          borderRightRadius="none"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setInputValue(e.currentTarget.value)
+          }
+          onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
+            if (e.key === 'Enter') {
+              router.push(`/search?name=${e.currentTarget.value}`)
+            }
+          }}
+        />
         <Button
-          onClick={() => router.push(`/search?name=${''}`)}
+          onClick={() => router.push(`/search?name=${inputValue}`)}
           h="51px"
           borderLeftRadius="none"
         >
@@ -61,7 +83,7 @@ export default function Home() {
         </Button>
       </InputGroup>
       <Box marginBottom="19px">
-        <Copyright />
+        <Copyright title="Data provided by Marvel. © 2020 MARVEL" />
       </Box>
       <Loading />
     </Flex>
