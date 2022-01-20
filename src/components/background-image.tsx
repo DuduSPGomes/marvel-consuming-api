@@ -3,17 +3,17 @@ import React from 'react'
 
 interface IBackgroundImageProps {
   url: string
-  filter: boolean
+  hasFilter: boolean
 }
 
 /**
  * @param url A string form background image
- * @param filter A boolean value for show blur on background image
+ * @param hasFilter A boolean value for show blur on background image
  */
 
 export default function BackgroundImage({
   url,
-  filter
+  hasFilter
 }: IBackgroundImageProps) {
   return (
     <Flex
@@ -27,7 +27,7 @@ export default function BackgroundImage({
       bgSize="cover"
       bgPosition="center"
       bgRepeat="no-repeat"
-      filter={`${filter ? 'blur(10px)' : ''}`}
+      filter={`${hasFilter ? 'blur(10px)' : ''}`}
       position="absolute"
       zIndex="1"
     />

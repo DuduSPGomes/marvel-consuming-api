@@ -1,28 +1,26 @@
-import { Flex } from '@chakra-ui/react'
+import { Flex, FlexProps } from '@chakra-ui/react'
 import BackgroundImage from 'components/background-image'
 import Loading from 'components/loading'
 import React from 'react'
 import TemplateHeader from 'components/template-header'
 import TemplateFooter from 'components/template-footer'
 
-interface ITemplateProps {
+interface ITemplateProps extends FlexProps {
   children: React.ReactNode
   backgroundImageUrl?: string
-  filter?: boolean
+  hasFilter?: false
 }
 
-export default function Template({
-  children,
-  backgroundImageUrl,
-  filter = false
-}: ITemplateProps) {
+export default function Template(props: ITemplateProps) {
   return (
     <Flex
       position="relative"
       flexDirection="column"
       alignItems="center"
       justifyContent="center"
+      w="full"
       h="100vh"
+      {...props}
     >
       <TemplateHeader />
       <Flex
@@ -33,10 +31,13 @@ export default function Template({
         flexDirection="column"
         alignItems="center"
       >
-        {children}
+        {props.children}
       </Flex>
       <TemplateFooter />
-      <BackgroundImage url={backgroundImageUrl} filter={filter} />
+      <BackgroundImage
+        url={props.backgroundImageUrl}
+        hasFilter={props.hasFilter}
+      />
       <Loading />
     </Flex>
   )
