@@ -26,7 +26,7 @@ export default function Template(props: ITemplateProps) {
       <Flex
         position="relative"
         zIndex="2"
-        overflowY="scroll"
+        overflowY="hidden"
         w="full"
         flexDirection="column"
         alignItems="center"
