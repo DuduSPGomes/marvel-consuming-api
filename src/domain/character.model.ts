@@ -1,4 +1,4 @@
-import { ResourceList } from './resource-list.module'
+import { ResourceList } from './resource-list.model'
 import { URLs } from './urls.model'
 import { Image } from './image.model'
 
