@@ -8,7 +8,7 @@ import TemplateFooter from 'components/template-footer'
 interface ITemplateProps extends FlexProps {
   children: React.ReactNode
   backgroundImageUrl?: string
-  hasFilter?: boolean
+  hasFilter?: false
 }
 
 export default function Template(props: ITemplateProps) {
