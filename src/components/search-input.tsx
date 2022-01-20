@@ -15,6 +15,7 @@ export default function SearchInput() {
       fontSize="sm"
       fontWeight="700"
       paddingLeft="34px"
+      borderRightRadius="none"
       onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
         const name = e.currentTarget.value
         if (e.key === 'Enter') {

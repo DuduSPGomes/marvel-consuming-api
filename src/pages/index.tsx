@@ -52,7 +52,11 @@ export default function Home() {
           <Icon as={SearchIcon} />
         </InputLeftElement>
         <SearchInput />
-        <Button onClick={() => router.push(`/search?name=${''}`)}>
+        <Button
+          onClick={() => router.push(`/search?name=${''}`)}
+          h="51px"
+          borderLeftRadius="none"
+        >
           Avançar
         </Button>
       </InputGroup>
