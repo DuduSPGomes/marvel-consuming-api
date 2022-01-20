@@ -26,10 +26,15 @@ export default function Template(props: ITemplateProps) {
       <Flex
         position="relative"
         zIndex="2"
-        overflowY="hidden"
+        overflowY="scroll"
         w="full"
         flexDirection="column"
         alignItems="center"
+        sx={{
+          '&::-webkit-scrollbar': {
+            display: 'none'
+          }
+        }}
       >
         {props.children}
       </Flex>
